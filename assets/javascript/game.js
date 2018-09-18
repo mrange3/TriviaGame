@@ -9,6 +9,10 @@ $(document).ready(function () {
 
     var score = 0;
 
+    var lastQuestion = false;
+
+    var failure = '<iframe src="https://giphy.com/embed/4OJFCEeGzYGs0" width="480" height="313" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/wrong-err-4OJFCEeGzYGs0">via GIPHY</a></p>'
+
     // question & answer array
     var questionBank = [
         {
@@ -29,6 +33,18 @@ $(document).ready(function () {
             correctAnswer: "Kobe Bryant",
             image: '<iframe src="https://giphy.com/embed/xSSXHCyUPdfDa" width="480" height="275" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/nba-draft-charlotte-hornets-xSSXHCyUPdfDa">via GIPHY</a></p>'
         },
+        {
+            question: "Which of these players has won the most MVP awards",
+            choices: ["Kevin Garnett", "Kobe Bryant", "Steve Nash", "Kevin Durant"],
+            correctAnswer: "Steve Nash",
+            image: '<iframe src="https://giphy.com/embed/3o7aTnRulacz1EySti" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/nba-basketball-all-star-game-3o7aTnRulacz1EySti">via GIPHY</a></p>'
+        },
+        {
+            question: "Who hold the record for most points per game in their career?",
+            choices: ["Wilt Chamberlain", "Kareem Abdul-Jabar", "Michael Jordan", "Magic Johnson"],
+            correctAnswer: "Michael Jordan",
+            image: '<iframe src="https://giphy.com/embed/l3q2JCu9lep6dAmyY" width="480" height="351" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/nba-shrug-mj-l3q2JCu9lep6dAmyY">via GIPHY</a></p>'
+        },
     ];
 
 
@@ -41,14 +57,12 @@ $(document).ready(function () {
         $("#answer4").text((questionBank[questionNumber].choices[3]))
         $(".score").text("Score: " + score + "/" + questionNumber)
         timer();
-
+        lastQuestion = false;
     }
 
     function timer() {
         sec = sec - 1;
         if (sec < 1) {
-            clearInterval(counter);
-            alert("Out of Time")
             questionNumber++
             currentQuestion()
             return;
@@ -61,23 +75,28 @@ $(document).ready(function () {
 
     function victory() {
         $(".current-question").html(questionBank[questionNumber].image);
+        sec = 15;
+        score++
         setTimeout(currentQuestion,5000);
     }
 
 
     $(".btn").click(function () {
+        if (!lastQuestion) {
         var userGuess = $(this).text();
         if (userGuess === questionBank[questionNumber].correctAnswer) {
             console.log(this)
-            victory()
+            victory();
             questionNumber++
-            score++
+            lastQuestion = true;
         } else {
-            alert("You Lose")
+            $(".current-question").html(failure);
             questionNumber++
-            currentQuestion()
+            setTimeout(currentQuestion,5000);
         }
-
+    } else {
+        return false;
+    }
     })
 
     currentQuestion()
