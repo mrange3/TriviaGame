@@ -48,19 +48,29 @@ $(document).ready(function () {
     ];
 
 
+
     function currentQuestion() {
+        if (questionNumber < questionBank.length) {
         sec = 15;
         $(".current-question").text(questionBank[questionNumber].question);
-        $("#answer1").text((questionBank[questionNumber].choices[0]))
-        $("#answer2").text((questionBank[questionNumber].choices[1]))
-        $("#answer3").text((questionBank[questionNumber].choices[2]))
-        $("#answer4").text((questionBank[questionNumber].choices[3]))
-        $(".score").text("Score: " + score + "/" + questionNumber)
+        $("#answer1").text((questionBank[questionNumber].choices[0]));
+        $("#answer2").text((questionBank[questionNumber].choices[1]));
+        $("#answer3").text((questionBank[questionNumber].choices[2]));
+        $("#answer4").text((questionBank[questionNumber].choices[3]));
+        $(".score").text("Score: " + score + "/" + questionNumber);
         timer();
-        lastQuestion = false;
+        lastQuestion = false;} else {
+            $(".current-question").text("Game Over");
+            $("#answer1").text("You got " +score+ " out of " +questionNumber + " correct");
+            $("#answer2").text("");
+            $("#answer3").text("");
+            $("#answer4").text("");
+            $(".score").text("Score: " + score + "/" + questionNumber);
+        }
     }
 
     function timer() {
+        if (questionNumber < questionBank.length) {   
         sec = sec - 1;
         if (sec < 1) {
             questionNumber++
@@ -69,6 +79,9 @@ $(document).ready(function () {
         }
 
         $(".timer").text(sec)
+    } else {
+        return false;
+    }
     }
 
 
@@ -100,4 +113,5 @@ $(document).ready(function () {
     })
 
     currentQuestion()
+    
 })
