@@ -1,5 +1,9 @@
 #green {
     background-color: green;
-}#answer1 {
-    color:blue;
+}
+
+body {
+    background: url("../images/357215-large-basketball-court-background-2085x1251-for-1080p.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
 }

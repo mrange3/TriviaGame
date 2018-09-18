@@ -24,10 +24,10 @@ $(document).ready(function () {
             image: '<iframe src="https://giphy.com/embed/APDWvheiSClNXHQdXE" width="480" height="271" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/nba-simmons-philadelphia-76ers-APDWvheiSClNXHQdXE">via GIPHY</a></p>'
         },
         {
-            question: "Black Ops is the subtitle of which game?",
-            choices: ["Call of Duty", "Battlefield", "Operation:", "Sims 4"],
-            correctAnswer: "Call of Duty",
-            image: "<img src='assets/images/blackOps.jpg' class='img-circle shadow'>"
+            question: "Which of these Laker greats was originally drafted by Charlotte?",
+            choices: ["Kobe Bryant", "Magic Johnson", "Shaquille O'Neal", "Jerry West"],
+            correctAnswer: "Kobe Bryant",
+            image: '<iframe src="https://giphy.com/embed/xSSXHCyUPdfDa" width="480" height="275" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/nba-draft-charlotte-hornets-xSSXHCyUPdfDa">via GIPHY</a></p>'
         },
     ];
 
