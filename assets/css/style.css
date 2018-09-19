@@ -1,7 +1,9 @@
-#green {
+.green {
     background-color: green;
 }
-
+.red {
+    background-color: red;
+}
 body {
     background: url("../images/357215-large-basketball-court-background-2085x1251-for-1080p.jpg");
     background-repeat:no-repeat;
@@ -10,3 +12,10 @@ body {
 h1 {
     text-align: center;
 }
+.list-group-item {
+    background-color: none;
+}
+.remove {
+    outline: none !important;
+    box-shadow: none !important;
+ }

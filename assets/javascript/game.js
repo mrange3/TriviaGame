@@ -52,12 +52,15 @@ $(document).ready(function () {
     function currentQuestion() {
         if (questionNumber < questionBank.length) {
         sec = 15;
+        $(".btn").addClass("remove")
         $(".current-question").text(questionBank[questionNumber].question);
         $("#answer1").text((questionBank[questionNumber].choices[0]));
         $("#answer2").text((questionBank[questionNumber].choices[1]));
         $("#answer3").text((questionBank[questionNumber].choices[2]));
         $("#answer4").text((questionBank[questionNumber].choices[3]));
         $(".score").text("Score: " + score + "/" + questionNumber);
+        $(".btn").addClass("remove")
+        $("a").attr("class", "btn btn-primary btn-lg list-group-item list-group-item-action")
         timer();
         lastQuestion = false;} else {
             $(".current-question").text("Game Over");
@@ -84,8 +87,6 @@ $(document).ready(function () {
     }
     }
 
-
-
     function victory() {
         $(".current-question").html(questionBank[questionNumber].image);
         sec = 15;
@@ -102,10 +103,14 @@ $(document).ready(function () {
             victory();
             questionNumber++
             lastQuestion = true;
+            $(this).addClass("btn-success").removeClass("remove")
         } else {
+            lastQuestion = true;
             $(".current-question").html(failure);
             questionNumber++
             setTimeout(currentQuestion,5000);
+            $(this).addClass("btn-danger").removeClass("remove")
+            console.log(this)
         }
     } else {
         return false;
